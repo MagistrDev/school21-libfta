@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 21:21:01 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/15 22:39:45 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/12 19:17:49 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/12 19:25:07 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-void	*ft_memset(void *s, int c, size_t n)
+int		ft_toupper(int c)
 {
-	unsigned char	*mem;
-	unsigned char	ch;
-
-	ch = (unsigned char)c;
-	mem = (unsigned char *)s;
-	while (n--)
-		*(mem + n) = ch;
-	return (s);
+	if (c > 96 && c < 123)
+		return (c - 32);
+	else
+		return (c);
+	return (0);
 }

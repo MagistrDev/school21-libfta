@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 21:21:01 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/15 22:39:45 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/15 22:41:03 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/15 23:00:42 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
-	unsigned char	*mem;
+	unsigned char	*destn;
+	unsigned char	*str;
 	unsigned char	ch;
+	size_t			i;
 
+	i = 0;
+	destn = (unsigned char*)dest;
+	str = (unsigned char*)src;
 	ch = (unsigned char)c;
-	mem = (unsigned char *)s;
-	while (n--)
-		*(mem + n) = ch;
-	return (s);
+	while (*str != ch && i < n)
+	{
+		*destn = *str;
+		destn++;
+		str++;
+		i++;
+	}
+	return (destn + 1);
 }

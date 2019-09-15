@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   fr_memove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 21:21:01 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/15 22:39:45 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/15 23:05:43 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/15 23:21:37 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*mem;
-	unsigned char	ch;
+	unsigned char	*str;
 
-	ch = (unsigned char)c;
-	mem = (unsigned char *)s;
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	mem = (unsigned char *)dest;
+	str = (unsigned char *)src;
 	while (n--)
-		*(mem + n) = ch;
-	return (s);
+	{
+		*(mem + n) = *(str + n);
+	}
+	return (dest);
 }
