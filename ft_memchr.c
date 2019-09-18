@@ -6,7 +6,7 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/16 21:22:43 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/16 21:45:52 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/18 19:46:16 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 
 	mem = (unsigned char*)s;
 	chr = (unsigned char)c;
-	if ((s == NULL) || (n < 1))
-		return (NULL);
 	i = 0;
 	while (i < n)
 	{

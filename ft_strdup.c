@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 21:45:35 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/18 21:36:17 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/18 18:59:28 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/18 19:54:12 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strdup(const char *s)
 {
-	unsigned char	*mem;
-	unsigned char	*str;
-	size_t			i;
+	size_t		size;
+	char		*str;
 
-	if (dest == NULL && src == NULL)
+	size = 0;
+	str = (char *)s;
+	while (*str++ != 0)
+		size++;
+	size++;
+	str = NULL;
+	str = (char*)malloc(size);
+	if (str == NULL)
 		return (NULL);
-	i = 0;
-	mem = (unsigned char *)dest;
-	str = (unsigned char *)src;
-	while (i++ < n)
-		*(mem + i - 1) = *(str + i - 1);
-	return (dest);
+	while (size--)
+		str[size] = s[size];
+	return (str);
 }

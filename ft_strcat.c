@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 21:45:35 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/18 21:36:17 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/18 22:43:16 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/18 23:08:30 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+char	*ft_strcat(char *dest, const char *src)
 {
-	unsigned char	*mem;
-	unsigned char	*str;
-	size_t			i;
+	char	*s1;
+	char	*s2;
 
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	i = 0;
-	mem = (unsigned char *)dest;
-	str = (unsigned char *)src;
-	while (i++ < n)
-		*(mem + i - 1) = *(str + i - 1);
+	s1 = dest;
+	s2 = (char*)src;
+	while (*s1)
+		s1++;
+	while (*s2)
+	{
+		*s1 = *s2;
+		s1++;
+		s2++;
+	}
+	*s1 = 0;
 	return (dest);
 }
