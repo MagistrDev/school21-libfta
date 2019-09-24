@@ -1,22 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 21:38:05 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/24 22:07:14 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/24 21:02:05 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/24 21:27:30 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
 #include <stdlib.h>
 
-void	ft_memdel(void **ap)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	if (ap != NULL)
-	{
-		free(*ap);
-		*ap = NULL;
-	}
+	char	*str;
+	char	*st1;
+	char	*st2;
+	size_t	i;
+
+	i = 0;
+	st1 = (char*)s1;
+	while (*st1++)
+		i++;
+	st1 = (char*)s2;
+	while (*st1++)
+		i++;
+	if (!(st1 = (char*)malloc(i)))
+		return (NULL);
+	str = st1;
+	st2 = (char*)s1;
+	while (*st2++)
+		*st1++ = *(st2 - 1);
+	st2 = (char*)s2;
+	while (*st2++)
+		*st1++ = *(st2 - 1);
+	*st1 = 0;
+	return (str);
 }

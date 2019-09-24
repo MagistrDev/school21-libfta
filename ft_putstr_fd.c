@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 21:38:05 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/24 22:07:14 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/24 20:11:59 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/24 20:21:08 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 
-void	ft_memdel(void **ap)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	if (ap != NULL)
+	char	*str;
+
+	if (s != NULL)
 	{
-		free(*ap);
-		*ap = NULL;
+		str = (char*)s;
+		while (*str)
+		{
+			write(fd, str, 1);
+			str++;
+		}
 	}
 }
