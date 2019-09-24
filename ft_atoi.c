@@ -6,24 +6,33 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 23:59:13 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/21 00:46:23 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/25 01:19:37 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-int		ft_atoi(const char *nptr)
+int		ft_atoi(const char *str)
 {
+	int		flag;
+	int		nb;
 	char	*s;
-	char	f;
-	int		i;
 
-	i = 0;
-	s = (char*)nptr;
-	while (((*s > 8 && *s < 14) || *s == 32) && *s)
+	nb = 0;
+	flag = 1;
+	s = (char*)str;
+	while (*s == 9 || *s == 10 || *s == 11 || *s == 12 || *s == 13 || *s == 32)
 		s++;
-	f = (*s == '-') ? -1 : (void)f;
-	f = (*s++ == '+') ? 1 : (void)f;
-	while (*s >= '0' && *s <= '9';
-	return (0);
+	if (*s == '-')
+		flag = -1;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (*s >= '0' && *s <= '9')
+	{
+		nb = nb * 10 + *s - 48;
+		s++;
+	}
+	if ((s - (char*)str) > 25 && flag == 1)
+		return (-1);
+	if ((s - (char*)str) > 19 && flag == -1)
+		return (0);
+	return (flag * nb);
 }

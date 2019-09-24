@@ -6,7 +6,7 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 20:30:19 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/24 20:31:40 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/25 00:44:36 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_putendl_fd(char const *s, int fd)
 	{
 		str = (char*)s;
 		while (*str)
-			write(1, str++, 1);
+			write(fd, str++, 1);
 		write(fd, "\n", 1);
 	}
 }
