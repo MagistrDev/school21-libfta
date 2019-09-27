@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/25 01:20:38 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/26 23:04:16 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/26 23:22:49 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/27 01:14:11 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_itoa(int n)
+t_list		*ft_lstnew(void const *content, size_t content_size)
 {
-	int		i;
-	int		nbr;
-	char	*s;
+	t_list		*nl;
 
-	i = 1;
-	nbr = n;
-	while ((nbr /= 10) != 0)
-		i++;
-	if (!(s = (char*)malloc(i + 1 + ((n < 0) ? 1 : 0))))
+	if (!(nl = (t_list*)malloc(sizeof(t_list*))))
 		return (NULL);
-	*(s + i + ((n < 0) ? 1 : 0)) = 0;
-	*s = ((n < 0) ? '-' : *s);
-	if (n == 0)
-		*s = '0';
-	while (n != 0)
+	nl->content_size = (content == 0) ? 0 : content_size;
+	nl->next = NULL;
+	if (content == NULL)
+		nl->content = NULL;
+	else
 	{
-		*(s + i - 1 + ((n < 0) ? 1 : 0)) = (n % 10) * ((n < 0) ? -1 : 1) + '0';
-		n /= 10;
-		i--;
+		if (!(nl->content = (void*)malloc(content_size)))
+		{
+			free(nl);
+			nl = NULL;
+			return (NULL);
+		}
 	}
-	return (s);
+	ft_memcpy(nl->content, content, content_size);
+	return (nl);
 }

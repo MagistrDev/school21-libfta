@@ -6,7 +6,7 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 21:02:05 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/24 21:27:30 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/26 22:09:52 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*st2;
 	size_t	i;
 
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
 	i = 0;
 	st1 = (char*)s1;
 	while (*st1++)
