@@ -6,7 +6,7 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 21:37:55 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/27 03:20:44 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/28 02:57:09 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,9 @@ void			ft_lstdel(t_list **alst, void (*del)(void*, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-void			ft_lstapend(t_list **alst, t_list *new);
 size_t			ft_lstsize(t_list *begin_list);
-t_list			*ft_lstat(t_list *begin_list, size_t nb);
-t_list			*ft_lstlast(t_list *begin_list);
-typedef struct	s_btree
-{
-	struct s_btree	*left;
-	struct s_btree	*right;
-	void			*item;
-	size_t			item_size;
-}				t_btree;
-t_btree			*ft_btree_new_node(void *item, size_t item_size);
-void			ft_btree_apply_prefix(t_btree *root,
-		void (*applyf)(t_btree *elem));
-void			ft_btree_apply_infix(t_btree *root,
-		void (*applyf)(t_btree *elem));
-void			ft_btree_apply_suffix(t_btree *root,
-		void (*applyf)(t_btree *elem));
+void			ft_lstpback(t_list **begin_list, void *condent);
+void			ft_strskip(char **s, char c, char f);
+void			ft_arrdel(char ***arr, size_t size);
+
 #endif

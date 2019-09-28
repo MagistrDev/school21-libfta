@@ -5,50 +5,53 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/24 00:18:09 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/24 01:49:38 by ecelsa           ###   ########.fr       */
+/*   Created: 2019/09/27 21:51:23 by ecelsa            #+#    #+#             */
+/*   Updated: 2019/09/28 05:42:14 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+static size_t	ft_cntword(char *s, char c)
 {
-	char	**ar;
-	char	*str;
-	int		flag;
-	size_t	i;
+	size_t		i;
+	char		*sub;
 
-	ar = NULL;
-	flag = 0;
-	i = 1;
-	str = (char*)s;
-	while (*str == c)
-		str++;
-	while (*str++)
-		i += (*(str - 1) == c && *str != c && *str != 0) ? 1 : 0;
-	if (!(ar = (char**)malloc(sizeof(char*) * (i + 1))))
-		return (NULL);
-	str = (char*)s;
-			printf("%zu",i);
-	return (ar);
-}
-
-
-
-void hop()
-{
+	i = 0;
 	while (*s)
-		i++;
-	str = (char**)malloc(i);
-
+	{
+		ft_strskip(&s, c, 0);
+		sub = s;
+		ft_strskip(&s, c, 1);
+		if (s != sub)
+			i++;
+	}
+	return (i);
 }
 
-int		main(int argc, char **argv)
+char			**ft_strsplit(char const *s, char c)
 {
-	if (argc == 3)
-		ft_strsplit(argv[1], argv[2][0]);
-	return (0);
+	char		**ar;
+	char		**ok;
+	char		*s1;
+	char		*s2;
+
+	if (s == NULL || c == 0)
+		return (NULL);
+	s1 = (char*)s;
+	if (!(ar = (char**)malloc(sizeof(char*) * (ft_cntword(s1, c) + 1))))
+		return (NULL);
+	ok = ar;
+	*(ok + ft_cntword(s1, c)) = NULL;
+	while (*s1)
+	{
+		ft_strskip(&s1, c, 0);
+		s2 = s1;
+		ft_strskip(&s1, c, 1);
+		if (*s2)
+			if (!(*ar = ft_strsub(s2, 0, s1 - s2)))
+				ft_arrdel(&ok, s1 - s2);
+		ar++;
+	}
+	return (ok);
 }
