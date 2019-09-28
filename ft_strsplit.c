@@ -6,7 +6,7 @@
 /*   By: ecelsa <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/27 21:51:23 by ecelsa            #+#    #+#             */
-/*   Updated: 2019/09/28 05:42:14 by ecelsa           ###   ########.fr       */
+/*   Updated: 2019/09/28 05:48:20 by ecelsa           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char			**ft_strsplit(char const *s, char c)
 	char		*s1;
 	char		*s2;
 
-	if (s == NULL || c == 0)
+	if (s == NULL)
 		return (NULL);
 	s1 = (char*)s;
 	if (!(ar = (char**)malloc(sizeof(char*) * (ft_cntword(s1, c) + 1))))
